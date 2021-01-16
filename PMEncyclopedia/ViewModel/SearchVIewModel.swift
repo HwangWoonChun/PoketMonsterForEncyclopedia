@@ -18,7 +18,7 @@ struct SearchViewModel {
         self.pokemons = pokemons
     }
     
-    public func searchPokemon() -> [Pokemon] {
+    func searchPokemon() -> [Pokemon] {
         guard let pokemons = self.pokemons else { return [] }
         let searchList = pokemons.pokemons.filter {
             let korean = $0.names[0]
@@ -26,7 +26,6 @@ struct SearchViewModel {
             let search = searchText.uppercased()
             return english.contains(search) || korean.contains(search) ? true : false
         }
-        print(searchList.count)
         return searchList
     }
 }
