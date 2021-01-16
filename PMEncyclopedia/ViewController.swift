@@ -13,9 +13,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        Network.sharedAPI.getPokemonName { (pokemons) in
+            let viewModel = SearchViewModel(pokemons: pokemons)
+            self.searchView.bind(to: viewModel)
+        }
     }
-
-
 }
 

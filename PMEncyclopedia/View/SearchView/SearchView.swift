@@ -11,7 +11,7 @@ class SearchView: UIView {
     
     @IBOutlet var textField: UITextField!
     
-    private var viewModel: SearchViewModel?
+    public var viewModel: SearchViewModel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,7 +28,10 @@ class SearchView: UIView {
         guard let view = loadNib(nibName: "SearchView") else { return }
         view.frame = self.bounds
         self.addSubview(view)
-        //viewModel
-        self.viewModel = SearchViewModel(searchText: "", searchResultText: "")
+    }
+}
+
+extension SearchView: Bindable {
+    func bindViewModel() {
     }
 }

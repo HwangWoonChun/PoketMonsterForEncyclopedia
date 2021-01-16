@@ -8,6 +8,11 @@
 import Foundation
 
 struct SearchViewModel {
-    let searchText: String?
-    let searchResultText: String?
+    
+    var searchText: String = ""
+    var pokemons: Pokemons?
+    
+    init(pokemons: Pokemons?) {
+        self.pokemons = pokemons
+    }
 }
