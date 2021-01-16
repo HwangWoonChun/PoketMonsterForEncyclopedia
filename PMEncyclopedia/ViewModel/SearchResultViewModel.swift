@@ -9,11 +9,12 @@ import Foundation
 
 struct SearchResultViewModel {
     
-    var searchText: String?
-    var searchResult: Pokemon?
+    let searchText: String?
+    let searchResult: Pokemon?
 
     init(searchText: String?, searchResult: Pokemon?) {
         self.searchText = searchText
         self.searchResult = searchResult
     }
+    
 }

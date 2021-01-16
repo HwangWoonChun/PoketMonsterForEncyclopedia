@@ -51,6 +51,7 @@ class SearchView: UIView {
     }
     
     @objc func textFieldDidChange() {
+        guard let _ = self.viewModel else { return }
         guard let string = textField.text else { return }
         
         self.viewModel.searchText = string
@@ -68,7 +69,7 @@ class SearchView: UIView {
 
 extension SearchView: Bindable {
     func bindViewModel() {
-        let count = self.viewModel.pokemons?.pokemons.count ?? 0
+        let count = self.viewModel.pokemons?.pokemons?.count ?? 0
         DispatchQueue.main.async {
             self.countLabel.text = "포켓몬 총 \(count) 마리"
         }
