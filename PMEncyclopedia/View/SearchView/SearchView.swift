@@ -28,10 +28,21 @@ class SearchView: UIView {
         guard let view = loadNib(nibName: "SearchView") else { return }
         view.frame = self.bounds
         self.addSubview(view)
+        //
+        self.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange() {
+        guard let string = textField.text else { return }
+        if string.count > 0 {
+            self.viewModel.searchText = string
+            self.viewModel.searchResult = self.viewModel.searchPokemon()
+        }
     }
 }
 
 extension SearchView: Bindable {
     func bindViewModel() {
+        
     }
 }
