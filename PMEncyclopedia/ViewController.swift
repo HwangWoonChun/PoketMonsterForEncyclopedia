@@ -69,10 +69,12 @@ extension ViewController: SearchViewDelegate {
 
 extension ViewController: PokemonInfoViewDelegate {
     func moveToMap(locations: [Location]?) {
-        if let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-            self.navigationController?.present(detailVC, animated: true, completion: {
-                
-            })
+        guard let locations = locations else { return }
+        if locations.count == 0 { return }
+        if var detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            let viewModel = LocationViewModel(locations: locations)
+            detailVC.bind(to: viewModel)
+            self.navigationController?.pushViewController(detailVC, animated: true)
         }
     }
 }

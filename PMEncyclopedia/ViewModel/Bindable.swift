@@ -20,3 +20,11 @@ extension Bindable where Self: UIView {
         bindViewModel()
     }
 }
+
+extension Bindable where Self: UIViewController {
+    mutating func bind(to viewModel: Self.ViewModelType) {
+        self.viewModel = viewModel
+        loadViewIfNeeded()
+        bindViewModel()
+    }
+}

@@ -11,9 +11,8 @@
         <!--Navigation Controller-->
         <scene sceneID="nI8-Nm-1yB">
             <objects>
-                <navigationController id="MKv-ud-bg5" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="MKv-ud-bg5" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sJJ-uu-bml">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -29,18 +28,18 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PMEncyclopedia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ry-XW-tfx" customClass="SearchView" customModule="PMEncyclopedia" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2Ry-XW-tfx" secondAttribute="height" multiplier="207:50" id="gGi-Q4-KBU"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s55-YB-Mkd">
-                                <rect key="frame" x="0.0" y="108" width="414" height="666"/>
+                                <rect key="frame" x="0.0" y="152" width="414" height="710"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -57,7 +56,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hW0-Ur-FRZ"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="searchView" destination="2Ry-XW-tfx" id="xbR-GU-0ql"/>
                         <outlet property="tableView" destination="s55-YB-Mkd" id="uSR-aA-ndc"/>
