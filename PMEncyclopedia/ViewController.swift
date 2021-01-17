@@ -11,25 +11,38 @@ class ViewController: UIViewController {
     
     @IBOutlet var searchView: SearchView!
     @IBOutlet var tableView: UITableView!
-    var popupView = PokemonInfoView()
+    private var popupView = PokemonInfoView()
+
+    private var locations: [Location]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.setup()
+        self.requestService()
+    }
+    
+    private func setup() {
         self.searchView.delegate = self
-        //Service
-        Network.sharedAPI.getPokemonName { (pokemons) in
-            let viewModel = SearchViewModel(pokemons: pokemons)
-            self.searchView.bind(to: viewModel)
-        }
         //
         let nib = UINib(nibName: "SearchResultCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "SearchResultCell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
         //
-        self.popupView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width - 32, height: 300)
+        self.popupView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         self.popupView.center = view.center
+    }
+    
+    private func requestService() {
+        //pokemonList
+        Network.sharedAPI.getPokemonName { (pokemons) in
+            let viewModel = SearchViewModel(pokemons: pokemons)
+            self.searchView.bind(to: viewModel)
+        }
+        //locationList
+        Network.sharedAPI.getPokeLocation { location in
+            self.locations = location?.locations ?? []
+        }
     }
     
     private func setPopupView(names: [String]?, info: PokemonInfo?, location: [Location]?) {
@@ -87,13 +100,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         //        }
         let searchResult = self.searchView.viewModel.searchResult
         let pokemon = searchResult[indexPath.row]
-        if let id = pokemon.id {
+        if let id = pokemon.id, let locations = self.locations {
             Network.sharedAPI.getPokemonDetail(id: "\(id)") { info in
-                Network.sharedAPI.getPokeLocation { location in
-                    let location = location?.locations ?? []
-                    let searchLocationList = location.filter { return $0.id == pokemon.id ? true : false }
-                    self.setPopupView(names: pokemon.names, info: info, location: searchLocationList)
-                }
+                let searchLocationList = locations.filter { return $0.id == pokemon.id ? true : false }
+                self.setPopupView(names: pokemon.names, info: info, location: searchLocationList)
             }
         }
     }
