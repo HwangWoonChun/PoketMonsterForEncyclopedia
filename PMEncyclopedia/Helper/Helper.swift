@@ -17,6 +17,16 @@ extension UIView {
     }
 }
 
+extension Int {
+    //Int for comma
+    func withCommas() -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let value = Int(self)
+        return numberFormatter.string(from: NSNumber(value: value))!
+    }
+}
+
 fileprivate var imageCache = NSCache<NSString, AnyObject>()
 extension UIImageView {
     //downloadImage

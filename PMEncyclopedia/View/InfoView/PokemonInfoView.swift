@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PokemonInfoViewDelegate {
-    func moveToMap()
+    func moveToMap(locations: [Location]?)
 }
 
 class PokemonInfoView: UIView {
@@ -22,6 +22,7 @@ class PokemonInfoView: UIView {
     @IBOutlet var mapButton: UIButton!
     
     public var viewModel: InfoViewModel!
+    public var delegate: PokemonInfoViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -53,7 +54,7 @@ class PokemonInfoView: UIView {
     }
     
     @IBAction func touchedMapButton(sender: Any) {
-
+        self.delegate?.moveToMap(locations: self.viewModel.locations)
     }
 }
 
@@ -65,8 +66,10 @@ extension PokemonInfoView: Bindable {
             self.mapButton.isHidden = count > 0 ? false : true
             self.nameLabel.text = self.viewModel.name?[0] ?? ""
             self.subNameLabel.text = self.viewModel.name?[1] ?? ""
-            self.heightLabel.text = "height : \(self.viewModel.pokemon?.height ?? 0)"
-            self.weightLabel.text = "weight : \(self.viewModel.pokemon?.weight ?? 0)"
+            let height = self.viewModel.pokemon?.height ?? 0
+            let weight = self.viewModel.pokemon?.weight ?? 0
+            self.heightLabel.text = "height : \(height.withCommas())"
+            self.weightLabel.text = "weight : \(weight.withCommas())"
             self.imageView.downloadImage(from: self.viewModel.imageURL ?? "")
         }
     }

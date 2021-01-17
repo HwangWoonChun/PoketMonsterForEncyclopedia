@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     
     private func setup() {
         self.searchView.delegate = self
+        self.popupView.delegate = self
         //
         let nib = UINib(nibName: "SearchResultCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "SearchResultCell")
@@ -66,6 +67,16 @@ extension ViewController: SearchViewDelegate {
     }
 }
 
+extension ViewController: PokemonInfoViewDelegate {
+    func moveToMap(locations: [Location]?) {
+        if let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            self.navigationController?.present(detailVC, animated: true, completion: {
+                
+            })
+        }
+    }
+}
+
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -93,11 +104,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        if let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-        //            self.navigationController?.present(detailVC, animated: true, completion: {
-        //
-        //            })
-        //        }
         let searchResult = self.searchView.viewModel.searchResult
         let pokemon = searchResult[indexPath.row]
         if let id = pokemon.id, let locations = self.locations {
