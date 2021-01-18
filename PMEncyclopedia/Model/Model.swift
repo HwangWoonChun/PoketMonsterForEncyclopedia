@@ -82,6 +82,6 @@ struct Locations: Codable {
 
 // MARK: - Pokemon
 struct Location: Codable {
-    let lat, lng: Double
-    let id: Int
+    let lat, lng: Double?
+    let id: Int?
 }

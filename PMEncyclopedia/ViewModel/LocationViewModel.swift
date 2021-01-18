@@ -17,7 +17,7 @@ struct LocationViewModel {
         
         if let locations = self.locations {
             self.pointList = locations.map {
-                let geo = MTMapPointGeo(latitude: $0.lat, longitude: $0.lng)
+                let geo = MTMapPointGeo(latitude: $0.lat ?? 0, longitude: $0.lng ?? 0)
                 let point = MTMapPoint(geoCoord: geo)
                 let poItem = MTMapPOIItem()
                 poItem.mapPoint = point
