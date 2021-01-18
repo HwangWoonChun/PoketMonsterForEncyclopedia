@@ -291,9 +291,9 @@
 		09CD057B25B1767C00E03660 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				096B3D2F25B380CF0023A856 /* InfoView */,
-				096B3D2E25B380BD0023A856 /* SearchResultView */,
 				09CD058425B176E900E03660 /* SearchView */,
+				096B3D2E25B380BD0023A856 /* SearchResultView */,
+				096B3D2F25B380CF0023A856 /* InfoView */,
 			);
 			path = View;
 			sourceTree = "<group>";

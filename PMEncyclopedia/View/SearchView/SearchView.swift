@@ -48,22 +48,15 @@ class SearchView: UIView {
         self.addSubview(view)
         //
         self.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        //
+        self.textField.becomeFirstResponder()
     }
     
     @objc func textFieldDidChange() {
         guard let _ = self.viewModel else { return }
         guard let string = textField.text else { return }
-        
-        self.viewModel.searchText = string
-        //
-        if string.count == 0 {
-            self.viewModel.searchResult = []
-        } else {
-            self.viewModel.searchResult = self.viewModel.searchPokemon()
-        }
-        //
+        self.viewModel.searchPokemon(searchText: string)
         self.delegate?.endSearch()
-
     }
 }
 

@@ -14,6 +14,7 @@ class SearchResultCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.titleLabel.text = ""
     }
 }
 
