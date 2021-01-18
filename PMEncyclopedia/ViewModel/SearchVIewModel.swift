@@ -18,14 +18,15 @@ struct SearchViewModel {
         self.pokemons = pokemons
     }
     
-    func searchPokemon() -> [Pokemon] {
-        guard let pokemons = self.pokemons else { return [] }
+    mutating func searchPokemon(searchText: String) {
+        guard let pokemons = self.pokemons else { return }
         let searchList = (pokemons.pokemons ?? []).filter {
             let korean = $0.names?[0] ?? ""
             let english = ($0.names?[1] ?? "").uppercased()
             let search = searchText.uppercased()
             return english.contains(search) || korean.contains(search) ? true : false
         }
-        return searchList
+        self.searchText = searchText
+        self.searchResult = searchList
     }
 }
