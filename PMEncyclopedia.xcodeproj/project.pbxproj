@@ -64,7 +64,6 @@
 		09FBE9A025B3E2030058C859 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FBE92F25B3DD870058C859 /* libxml2.tbd */; };
 		09FBE9A425B3E2130058C859 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FBE93025B3DD8D0058C859 /* libsqlite3.tbd */; };
 		09FBE9AC25B3E3C50058C859 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FBE9AB25B3E3C50058C859 /* LocationViewModel.swift */; };
-		09FBE9B725B52F620058C859 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FBE9B625B52F620058C859 /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,7 +156,6 @@
 		09FBE96725B3DE490058C859 /* DaumMap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DaumMap.framework; sourceTree = "<group>"; };
 		09FBE99525B3E04F0058C859 /* PMEncyclopedia-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PMEncyclopedia-Bridging-Header.h"; sourceTree = "<group>"; };
 		09FBE9AB25B3E3C50058C859 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
-		09FBE9B625B52F620058C859 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,7 +310,6 @@
 			children = (
 				098E313A25B29F9C005B4C92 /* Bindable.swift */,
 				096B3D2425B36B090023A856 /* SearchResultViewModel.swift */,
-				09FBE9B625B52F620058C859 /* SearchViewModel.swift */,
 				096B3D3825B381130023A856 /* InfoViewModel.swift */,
 				09FBE9AB25B3E3C50058C859 /* LocationViewModel.swift */,
 			);
@@ -566,7 +563,6 @@
 				096B3D2A25B373BB0023A856 /* DetailViewController.swift in Sources */,
 				0968029D25B14EA60071F07D /* ViewController.swift in Sources */,
 				096B3D1825B369F90023A856 /* SearchResultCell.swift in Sources */,
-				09FBE9B725B52F620058C859 /* SearchViewModel.swift in Sources */,
 				096B3D3125B380F50023A856 /* PokemonInfoView.swift in Sources */,
 				096B3D3925B381130023A856 /* InfoViewModel.swift in Sources */,
 				0968029925B14EA60071F07D /* AppDelegate.swift in Sources */,
