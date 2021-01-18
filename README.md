@@ -10,3 +10,4 @@
     * Langauage : Swift
     * Map Library : KakaoMap 
     * Architecture : MVVM(with Protocol)
+    * Develop Tool : XCode 12.3
