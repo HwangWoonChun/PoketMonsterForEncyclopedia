@@ -8,5 +8,5 @@
 
 * Application
     * Langauage : Swift
-    * Open Source: KakaoMap 
-    * Architecture: MVVM(with Protocol)
+    * Open Source : KakaoMap 
+    * Architecture : MVVM(with Protocol)
