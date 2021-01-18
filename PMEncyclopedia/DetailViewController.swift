@@ -12,6 +12,7 @@ class DetailViewController: UIViewController {
     private var mapView: MTMapView?
     public var viewModel: LocationViewModel!
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView = MTMapView(frame: self.view.bounds)
@@ -22,6 +23,7 @@ class DetailViewController: UIViewController {
     }
 }
 
+// MARK: - Bindable
 extension DetailViewController: Bindable {
     func bindViewModel() {
         guard let mapView = self.mapView else { return }

@@ -21,7 +21,7 @@ class SearchResultCell: UITableViewCell {
 extension SearchResultCell: Bindable {
     func bindViewModel() {
         DispatchQueue.main.async {
-            let fullText = (self.viewModel.searchResult?.names?[0] ?? "")
+            let fullText = self.viewModel.koreanName ?? ""
             let strNumber: NSString = fullText as NSString
             let range = (strNumber).range(of: self.viewModel.searchText ?? "")
             let attribute = NSMutableAttributedString.init(string: fullText)

@@ -15,6 +15,7 @@ class ViewController: UIViewController {
 
     private var locations: [Location]?
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
@@ -34,6 +35,8 @@ class ViewController: UIViewController {
         self.popupView.center = view.center
     }
     
+    // MARK: - Private
+    //Service
     private func requestService() {
         //pokemonList
         Network.sharedAPI.getPokemonName { (pokemons) in
@@ -45,7 +48,7 @@ class ViewController: UIViewController {
             self.locations = location?.locations ?? []
         }
     }
-    
+    //PoupSetup
     private func setPopupView(names: [String]?, info: PokemonInfo?, location: [Location]?) {
         DispatchQueue.main.async {
             self.popupView.transform = CGAffineTransform(scaleX: 0, y: 0)
@@ -59,6 +62,7 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: - SearchViewDelegate
 extension ViewController: SearchViewDelegate {
     func endSearch() {
         DispatchQueue.main.async {
@@ -67,6 +71,7 @@ extension ViewController: SearchViewDelegate {
     }
 }
 
+// MARK: - PokemonInfoViewDelegate
 extension ViewController: PokemonInfoViewDelegate {
     func moveToMap(locations: [Location]?) {
         guard let locations = locations else { return }
@@ -79,6 +84,7 @@ extension ViewController: PokemonInfoViewDelegate {
     }
 }
 
+// MARK: - UITableViewDelegate, UITableViewDelegate
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

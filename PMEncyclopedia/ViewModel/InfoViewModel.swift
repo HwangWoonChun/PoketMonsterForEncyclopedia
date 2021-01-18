@@ -13,14 +13,16 @@ struct InfoViewModel {
     let pokemon: PokemonInfo?
     let imageURL: String?
     let locations: [Location]?
+    let isHaveLocation: Bool?
 
     init(name: [String]?, pokemon: PokemonInfo?, locations: [Location]?) {
         self.name = name
         self.pokemon = pokemon
         self.locations = locations
+        self.isHaveLocation = (self.locations?.count ?? 0) > 0 ? true : false
         let sprite = pokemon?.sprites
         var url = ""
-        //frontdefault 우선
+        //frontDefault 우선 - 요구사항 2-c
         if let frontDefault = sprite?.frontDefault {
             url = frontDefault
         } else {
