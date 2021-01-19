@@ -11,7 +11,12 @@ class ViewController: UIViewController {
     
     @IBOutlet var searchView: SearchView!
     @IBOutlet var tableView: UITableView!
-    private var popupView = PokemonInfoView()
+    private lazy var popupView: PokemonInfoView = {
+        let infoView = PokemonInfoView()
+        infoView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        infoView.center = view.center
+        return infoView
+    }()
 
     private var locations: [Location]?
     
@@ -30,9 +35,6 @@ class ViewController: UIViewController {
         self.tableView.register(nib, forCellReuseIdentifier: "SearchResultCell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        //
-        self.popupView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        self.popupView.center = view.center
     }
     
     // MARK: - Private

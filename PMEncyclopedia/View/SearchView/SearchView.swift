@@ -55,7 +55,7 @@ class SearchView: UIView {
     @objc func textFieldDidChange() {
         guard let _ = self.viewModel else { return }
         guard let string = textField.text else { return }
-        self.viewModel.searchPokemon(searchText: string)
+        self.viewModel.searchText = string
         self.delegate?.endSearch()
     }
 }
