@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+ 
 struct SearchViewModel {
     
     //검색어
